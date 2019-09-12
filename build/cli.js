@@ -29,10 +29,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function executeCli() {
   (0, _localLogin.localLogin)();
 
-  const _$drop = _lodash.default.drop(process.argv, 2),
-        _$drop2 = _toArray(_$drop),
-        firstArg = _$drop2[0],
-        restOfArgs = _$drop2.slice(1);
+  const allArgs = _lodash.default.drop(process.argv, 2);
+
+  const _allArgs = _toArray(allArgs),
+        firstArg = _allArgs[0],
+        restOfArgs = _allArgs.slice(1);
 
   if (firstArg === 'publish') {
     (0, _publish.publish)(restOfArgs);
@@ -45,7 +46,7 @@ function executeCli() {
   } else if (firstArg === 'start') {
     (0, _start.start)(restOfArgs);
   } else {
-    (0, _executeExpo.executeExpo)([firstArg, ...restOfArgs]);
+    (0, _executeExpo.executeExpo)(allArgs);
   }
 }
 
