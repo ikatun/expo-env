@@ -11,6 +11,21 @@ It uses json keys username and password, for example `expo-env/credentials.json`
 }
 ```
 
+## Forces the use of `/node_modules'` expo
+expo-env fails to run if the local project doesn't have expo installed locally.
+Listing the correct expo-cli dependency is important for the project stability.
+
+## Expands expo start
+expo-env's start takes additional argument `env`, for example:
+```bash
+expo-env build:android production --ios
+```
+The command does the following actions:
+- logs into expo using credentials in `expo-env/credentials.json`
+- copies expo-env/production.env to .env (if it exists)
+- copies expo-env/production.env.json to env.json (if it exists)
+- executes expo start --ios
+
 ## Expands expo build:android
 expo-env's build:android takes additional argument `env`, for example:
 ```bash
