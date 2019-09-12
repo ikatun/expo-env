@@ -1,10 +1,5 @@
-import { readFileSync } from 'fs';
-import path from 'path';
 import { executeExpo } from './execute-expo';
-
-function readJson<T>(filePath: string): T {
-  return JSON.parse(readFileSync(path.join('expo-env', filePath), 'utf8'));
-}
+import { readJson } from './read-json';
 
 interface ILoginData {
   username: string;
@@ -12,6 +7,7 @@ interface ILoginData {
 }
 
 export function localLogin() {
-  const { username, password } = readJson<ILoginData>('credentials.json');
+  const { username, password } = readJson<ILoginData>('expo-env/credentials.json');
+  executeExpo(['logout'], { ignoreOutput: true });
   executeExpo(`login -u ${username} -p ${password} --non-interactive`.split(' '), { ignoreOutput: true });
 }

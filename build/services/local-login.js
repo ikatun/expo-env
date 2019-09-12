@@ -5,23 +5,18 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.localLogin = localLogin;
 
-var _fs = require("fs");
-
-var _path = _interopRequireDefault(require("path"));
-
 var _executeExpo = require("./execute-expo");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function readJson(filePath) {
-  return JSON.parse((0, _fs.readFileSync)(_path.default.join('expo-env', filePath), 'utf8'));
-}
+var _readJson2 = require("./read-json");
 
 function localLogin() {
-  const _readJson = readJson('credentials.json'),
+  const _readJson = (0, _readJson2.readJson)('expo-env/credentials.json'),
         username = _readJson.username,
         password = _readJson.password;
 
+  (0, _executeExpo.executeExpo)(['logout'], {
+    ignoreOutput: true
+  });
   (0, _executeExpo.executeExpo)(`login -u ${username} -p ${password} --non-interactive`.split(' '), {
     ignoreOutput: true
   });
