@@ -12,6 +12,6 @@ export function buildEverything(args: string[]) {
   }
 
   publish([envName]);
-  buildAndroid([envName]);
-  buildIos([envName], { skipPublish: true });
+  buildAndroid(args);
+  buildIos(args, { skipPublish: true });
 }
