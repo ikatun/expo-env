@@ -32,8 +32,8 @@ function buildEverything(args) {
   }
 
   (0, _publish.publish)([envName]);
-  (0, _buildAndroid.buildAndroid)([envName]);
-  (0, _buildIos.buildIos)([envName], {
+  (0, _buildAndroid.buildAndroid)(args);
+  (0, _buildIos.buildIos)(args, {
     skipPublish: true
   });
 }
