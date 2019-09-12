@@ -10,7 +10,8 @@ import { start } from './services/start';
 
 function executeCli() {
   localLogin();
-  const [firstArg, ...restOfArgs] = _.drop(process.argv, 2);
+  const allArgs = _.drop(process.argv, 2);
+  const [firstArg, ...restOfArgs] = allArgs;
 
   if (firstArg === 'publish') {
     publish(restOfArgs);
@@ -23,7 +24,7 @@ function executeCli() {
   } else if (firstArg === 'start') {
     start(restOfArgs);
   } else {
-    executeExpo([firstArg, ...restOfArgs]);
+    executeExpo(allArgs);
   }
 }
 
