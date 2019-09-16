@@ -1,5 +1,12 @@
-# expo-env
+# expo-env-cli
 Environment aware expo-cli wrapper
+
+## Installation
+```bash
+npm install -g expo-env-cli
+# or inside a project
+npm install --save-dev expo-env-cli
+```
 
 ## Uses local expo account
 Before executing local expo-cli, this tool executes noninteractive `./node_modules/expo login` using credentials from 'expo-env/credentials.json'.
