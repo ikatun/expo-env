@@ -6,15 +6,15 @@ var _localLogin = require("./services/local-login");
 
 var _executeExpo = require("./services/execute-expo");
 
-var _publish = require("./services/publish");
+var _publish = require("./commands/publish");
 
-var _buildIos = require("./services/build-ios");
+var _buildIos = require("./commands/build-ios");
 
-var _buildAndroid = require("./services/build-android");
+var _buildAndroid = require("./commands/build-android");
 
-var _buildEverything = require("./services/build-everything");
+var _buildEverything = require("./commands/build-everything");
 
-var _start = require("./services/start");
+var _start = require("./commands/start");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

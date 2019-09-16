@@ -1,6 +1,6 @@
-import { executeExpo } from './execute-expo';
+import { executeExpo } from '../services/execute-expo';
 import { publish } from './publish';
-import { copyEnvFiles } from './copy-env-files';
+import { copyEnvFiles } from '../services/copy-env-files';
 
 export interface IBuildIosOpts {
   skipPublish?: boolean;
@@ -17,7 +17,7 @@ export function buildIos(args: string[], opts: IBuildIosOpts = {}) {
 
   copyEnvFiles(envName);
 
-  if (opts.skipPublish) {
+  if (!opts.skipPublish) {
     executeExpo(['publish', '-c', '--release-channel', envName]);
   }
   executeExpo(['build:ios', '--no-publish', '--release-channel', envName, ...restOfArgs]);

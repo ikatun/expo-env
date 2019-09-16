@@ -1,6 +1,6 @@
-import { executeExpo } from './execute-expo';
+import { executeExpo } from '../services/execute-expo';
 import { publish } from './publish';
-import { copyEnvFiles } from './copy-env-files';
+import { copyEnvFiles } from '../services/copy-env-files';
 
 export function buildAndroid(args: string[]) {
   const [envName, ...restOfArgs] = args;

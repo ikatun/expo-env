@@ -1,5 +1,5 @@
-import { executeExpo } from './execute-expo';
-import { copyEnvFiles } from './copy-env-files';
+import { executeExpo } from '../services/execute-expo';
+import { copyEnvFiles } from '../services/copy-env-files';
 
 export function start(args: string[]) {
   const [envName, ...restOfArgs] = args;

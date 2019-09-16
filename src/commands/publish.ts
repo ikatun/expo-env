@@ -1,7 +1,7 @@
-import { readJson, writeJson } from './read-json';
-import { executeExpo } from './execute-expo';
+import { readJson, writeJson } from '../services/read-json';
+import { executeExpo } from '../services/execute-expo';
 import slug from 'slug';
-import { copyEnvFiles } from './copy-env-files';
+import { copyEnvFiles } from '../services/copy-env-files';
 
 function slugifyName(name: string) {
   return slug(name.replace(/\./i, '-'));

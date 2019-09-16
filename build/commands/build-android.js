@@ -5,9 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.buildAndroid = buildAndroid;
 
-var _executeExpo = require("./execute-expo");
+var _executeExpo = require("../services/execute-expo");
 
-var _copyEnvFiles = require("./copy-env-files");
+var _copyEnvFiles = require("../services/copy-env-files");
 
 function _toArray(arr) { return _arrayWithHoles(arr) || _iterableToArray(arr) || _nonIterableRest(); }
 

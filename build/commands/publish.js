@@ -5,13 +5,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.publish = publish;
 
-var _readJson = require("./read-json");
+var _readJson = require("../services/read-json");
 
-var _executeExpo = require("./execute-expo");
+var _executeExpo = require("../services/execute-expo");
 
 var _slug = _interopRequireDefault(require("slug"));
 
-var _copyEnvFiles = require("./copy-env-files");
+var _copyEnvFiles = require("../services/copy-env-files");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

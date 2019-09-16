@@ -2,11 +2,11 @@ import _ from 'lodash';
 
 import { localLogin } from './services/local-login';
 import { executeExpo } from './services/execute-expo';
-import { publish } from './services/publish';
-import { buildIos } from './services/build-ios';
-import { buildAndroid } from './services/build-android';
-import { buildEverything } from './services/build-everything';
-import { start } from './services/start';
+import { publish } from './commands/publish';
+import { buildIos } from './commands/build-ios';
+import { buildAndroid } from './commands/build-android';
+import { buildEverything } from './commands/build-everything';
+import { start } from './commands/start';
 
 function executeCli() {
   localLogin();
