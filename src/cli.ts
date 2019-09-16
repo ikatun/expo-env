@@ -7,34 +7,37 @@ import { buildIos } from './commands/build-ios';
 import { buildAndroid } from './commands/build-android';
 import { buildEverything } from './commands/build-everything';
 import { start } from './commands/start';
+import { downloadBuild } from './services/download-build';
 
-function executeCli() {
-  localLogin();
+async function executeCli() {
+  await localLogin();
   const allArgs = _.drop(process.argv, 2);
   const [firstArg, ...restOfArgs] = allArgs;
 
   if (firstArg === 'publish') {
-    publish(restOfArgs);
+    await publish(restOfArgs);
   } else if (firstArg === 'build:android') {
-    buildAndroid(restOfArgs);
+    await buildAndroid(restOfArgs);
   } else if (firstArg === 'build:ios') {
-    buildIos(restOfArgs)
+    await buildIos(restOfArgs)
   } else if (firstArg === 'build:everything') {
-    buildEverything(restOfArgs);
+    await buildEverything(restOfArgs);
   } else if (firstArg === 'start') {
-    start(restOfArgs);
+    await start(restOfArgs);
   } else {
     executeExpo(allArgs);
   }
 }
 
-try {
-  executeCli();
-} catch (e) {
-  const { message } = e;
-  if (message.startsWith('Usage')) {
-    console.error(message);
-  } else {
-    throw e;
+(async () => {
+  try {
+    await executeCli();
+  } catch (e) {
+    const {message} = e;
+    if (message.startsWith('Usage')) {
+      console.error(message);
+    } else {
+      throw e;
+    }
   }
-}
+})();

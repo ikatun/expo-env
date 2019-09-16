@@ -26,38 +26,51 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function executeCli() {
-  (0, _localLogin.localLogin)();
-
-  const allArgs = _lodash.default.drop(process.argv, 2);
-
-  const _allArgs = _toArray(allArgs),
-        firstArg = _allArgs[0],
-        restOfArgs = _allArgs.slice(1);
-
-  if (firstArg === 'publish') {
-    (0, _publish.publish)(restOfArgs);
-  } else if (firstArg === 'build:android') {
-    (0, _buildAndroid.buildAndroid)(restOfArgs);
-  } else if (firstArg === 'build:ios') {
-    (0, _buildIos.buildIos)(restOfArgs);
-  } else if (firstArg === 'build:everything') {
-    (0, _buildEverything.buildEverything)(restOfArgs);
-  } else if (firstArg === 'start') {
-    (0, _start.start)(restOfArgs);
-  } else {
-    (0, _executeExpo.executeExpo)(allArgs);
-  }
+  return _executeCli.apply(this, arguments);
 }
 
-try {
-  executeCli();
-} catch (e) {
-  const message = e.message;
+function _executeCli() {
+  _executeCli = _asyncToGenerator(function* () {
+    yield (0, _localLogin.localLogin)();
 
-  if (message.startsWith('Usage')) {
-    console.error(message);
-  } else {
-    throw e;
-  }
+    const allArgs = _lodash.default.drop(process.argv, 2);
+
+    const _allArgs = _toArray(allArgs),
+          firstArg = _allArgs[0],
+          restOfArgs = _allArgs.slice(1);
+
+    if (firstArg === 'publish') {
+      yield (0, _publish.publish)(restOfArgs);
+    } else if (firstArg === 'build:android') {
+      yield (0, _buildAndroid.buildAndroid)(restOfArgs);
+    } else if (firstArg === 'build:ios') {
+      yield (0, _buildIos.buildIos)(restOfArgs);
+    } else if (firstArg === 'build:everything') {
+      yield (0, _buildEverything.buildEverything)(restOfArgs);
+    } else if (firstArg === 'start') {
+      yield (0, _start.start)(restOfArgs);
+    } else {
+      (0, _executeExpo.executeExpo)(allArgs);
+    }
+  });
+  return _executeCli.apply(this, arguments);
 }
+
+_asyncToGenerator(function* () {
+  try {
+    yield executeCli();
+  } catch (e) {
+    const message = e.message;
+
+    if (message.startsWith('Usage')) {
+      console.error(message);
+    } else {
+      throw e;
+    }
+  }
+})();

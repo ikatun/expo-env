@@ -2,7 +2,7 @@ import { buildIos } from './build-ios';
 import { buildAndroid } from './build-android';
 import { publish } from './publish';
 
-export function buildEverything(args: string[]) {
+export async function buildEverything(args: string[]) {
   const [envName] = args;
   if (!envName) {
     throw new Error('Usage: expo-env build:everything env-name');
@@ -12,6 +12,6 @@ export function buildEverything(args: string[]) {
   }
 
   publish([envName]);
-  buildAndroid(args);
-  buildIos(args, { skipPublish: true });
+  await buildAndroid(args);
+  await buildIos(args, { skipPublish: true });
 }
