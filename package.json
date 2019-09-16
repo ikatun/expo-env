@@ -1,6 +1,6 @@
 {
   "name": "expo-env-cli",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Environment aware expo-cli wrapper",
   "main": "index.js",
   "bin": {
