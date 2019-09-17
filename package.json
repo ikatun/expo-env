@@ -4,7 +4,7 @@
   "description": "Environment aware expo-cli wrapper",
   "main": "index.js",
   "bin": {
-    "expo-env": "index.js"
+    "expo-env": "./index.js"
   },
   "dependencies": {
     "@types/lodash": "^4.14.138",
