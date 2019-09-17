@@ -16,6 +16,8 @@ var _buildEverything = require("./commands/build-everything");
 
 var _start = require("./commands/start");
 
+var _downloadBuild = require("./services/download-build");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _toArray(arr) { return _arrayWithHoles(arr) || _iterableToArray(arr) || _nonIterableRest(); }
@@ -54,6 +56,10 @@ function _executeCli() {
       yield (0, _buildEverything.buildEverything)(restOfArgs);
     } else if (firstArg === 'start') {
       yield (0, _start.start)(restOfArgs);
+    } else if (firstArg === 'download:ipa') {
+      yield (0, _downloadBuild.downloadBuild)('ipa');
+    } else if (firstArg === 'download:apk') {
+      yield (0, _downloadBuild.downloadBuild)('apk');
     } else {
       (0, _executeExpo.executeExpo)(allArgs);
     }

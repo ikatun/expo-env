@@ -24,6 +24,10 @@ async function executeCli() {
     await buildEverything(restOfArgs);
   } else if (firstArg === 'start') {
     await start(restOfArgs);
+  } else if (firstArg === 'download:ipa') {
+    await downloadBuild('ipa');
+  } else if (firstArg === 'download:apk') {
+    await downloadBuild('apk');
   } else {
     executeExpo(allArgs);
   }
