@@ -2,6 +2,7 @@ import { executeExpo } from '../services/execute-expo';
 import { publish } from './publish';
 import { copyEnvFiles } from '../services/copy-env-files';
 import { downloadBuild } from '../services/download-build';
+import { incrementIOSVersionCode } from '../services/increment-ios-version-code';
 
 export interface IBuildIosOpts {
   skipPublish?: boolean;
@@ -17,6 +18,8 @@ export async function buildIos(args: string[], opts: IBuildIosOpts = {}) {
   }
 
   copyEnvFiles(envName);
+
+  incrementIOSVersionCode();
 
   if (!opts.skipPublish) {
     executeExpo(['publish', '-c', '--release-channel', envName]);

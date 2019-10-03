@@ -11,6 +11,8 @@ var _copyEnvFiles = require("../services/copy-env-files");
 
 var _downloadBuild = require("../services/download-build");
 
+var _incrementAndroidVersionCode = require("../services/increment-android-version-code");
+
 function _toArray(arr) { return _arrayWithHoles(arr) || _iterableToArray(arr) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -42,6 +44,7 @@ function _buildAndroid() {
     }
 
     (0, _copyEnvFiles.copyEnvFiles)(envName);
+    (0, _incrementAndroidVersionCode.incrementAndroidVersionCode)();
     (0, _executeExpo.executeExpo)(['publish', '-c', '--release-channel', envName]);
     (0, _executeExpo.executeExpo)(['build:android', '--no-publish', '--release-channel', envName, ...restOfArgs]);
     yield (0, _downloadBuild.downloadBuild)('apk');
