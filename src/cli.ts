@@ -8,13 +8,8 @@ import { buildAndroid } from './commands/build-android';
 import { buildEverything } from './commands/build-everything';
 import { start } from './commands/start';
 import { downloadBuild } from './services/download-build';
-import { runLocalExpoEnv } from './services/run-local-expo-env-cli';
 
 async function executeCli() {
-  if (runLocalExpoEnv()) {
-    return;
-  }
-
   await localLogin();
   const allArgs = _.drop(process.argv, 2);
   const [firstArg, ...restOfArgs] = allArgs;

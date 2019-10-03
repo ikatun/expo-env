@@ -18,8 +18,6 @@ var _start = require("./commands/start");
 
 var _downloadBuild = require("./services/download-build");
 
-var _runLocalExpoEnvCli = require("./services/run-local-expo-env-cli");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _toArray(arr) { return _arrayWithHoles(arr) || _iterableToArray(arr) || _nonIterableRest(); }
@@ -40,11 +38,6 @@ function executeCli() {
 
 function _executeCli() {
   _executeCli = _asyncToGenerator(function* () {
-    if ((0, _runLocalExpoEnvCli.runLocalExpoEnv)()) {
-      console.log('executed local cli');
-      return;
-    }
-
     yield (0, _localLogin.localLogin)();
 
     const allArgs = _lodash.default.drop(process.argv, 2);
